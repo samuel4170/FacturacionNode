@@ -56,6 +56,14 @@ export const querys = {
  getTotalObservacions: "SELECT COUNT(*) FROM FacturaEnergiaElectrica.dbo.Observacion",
  updateObservacioById:"UPDATE [FacturaEnergiaElectrica].[dbo].[Observacion] SET Descripcion = @Descripcion WHERE Id = @id",
  
+     //hacemos las consultas aca este de facturacion
+     getAllFactura: "SELECT TOP(500) * FROM [FacturaEnergiaElectrica].[dbo].[Factura]",
+     addNewFactur:"INSERT INTO [FacturaEnergiaElectrica].[dbo].[Factura] (Descripcion) VALUES (@Descripcion);",
+     getFacturaById: "SELECT * FROM Factura Where Id = @Id",
+     deleteFactur: "DELETE FROM [FacturaEnergiaElectrica].[dbo].[Factura] WHERE Id= @Id",
+     getTotalFacturas: "SELECT COUNT(*) FROM FacturaEnergiaElectrica.dbo.Factura",
+     updateFacturById:"UPDATE [FacturaEnergiaElectrica].[dbo].[Factura] SET Descripcion = @Descripcion WHERE Id = @id",
+
   };
 
 

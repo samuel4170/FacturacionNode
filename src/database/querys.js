@@ -57,12 +57,12 @@ export const querys = {
  updateObservacioById:"UPDATE [FacturaEnergiaElectrica].[dbo].[Observacion] SET Descripcion = @Descripcion WHERE Id = @id",
  
      //hacemos las consultas aca este de facturacion
-     getAllFactura: "SELECT TOP(500) * FROM [FacturaEnergiaElectrica].[dbo].[Factura]",
-     addNewFactur:"INSERT INTO [FacturaEnergiaElectrica].[dbo].[Factura] (Descripcion) VALUES (@Descripcion);",
-     getFacturaById: "SELECT * FROM Factura Where Id = @Id",
-     deleteFactur: "DELETE FROM [FacturaEnergiaElectrica].[dbo].[Factura] WHERE Id= @Id",
-     getTotalFacturas: "SELECT COUNT(*) FROM FacturaEnergiaElectrica.dbo.Factura",
-     updateFacturById:"UPDATE [FacturaEnergiaElectrica].[dbo].[Factura] SET Descripcion = @Descripcion WHERE Id = @id",
+getAllFactura: "SELECT TOP(500) * FROM [FacturaEnergiaElectrica].[dbo].[Factura]",
+addNewFactur:"INSERT INTO [FacturaEnergiaElectrica].[dbo].[Factura] (IdCliente, IdEmpleado, LecturaActual, LecturaAntigua, FechaEmision, IdObservacion) VALUES (@IdCliente, @IdEmpleado, @LecturaActual, @LecturaAntigua, @FechaEmision, @IdObservacion);",
+getFacturaById: "SELECT * FROM Factura Where IdFactura = @IdFactura",
+deleteFactur: "DELETE FROM [FacturaEnergiaElectrica].[dbo].[Factura] WHERE IdFactura= @IdFactura",
+getTotalFacturas: "SELECT COUNT(*) FROM FacturaEnergiaElectrica.dbo.Factura",
+updateFacturById:"UPDATE [FacturaEnergiaElectrica].[dbo].[Factura] SET IdEmpleado = @IdEmpleado, LecturaActual = @LecturaActual, LecturaAntigua = @LecturaAntigua, FechaEmision = @FechaEmision, IdObservacion = @IdObservacion WHERE IdFactura = @IdFactura",
 
   };
 

@@ -1,4 +1,5 @@
 import { getConnection, querys, sql } from "../database";
+
 //mostrar campos
 export const getFactura = async (req, res) => {
   try {
@@ -13,11 +14,13 @@ export const getFactura = async (req, res) => {
 
 //crear campo
 export const createNewFactur = async (req, res) => {
-  const { Nombre, Email, Contraseña } = req.body;
+  const {IdCliente, IdEmpleado, LecturaActual, LecturaAntigua, FechaEmision, IdObservacion} = req.body;
   let {  } = req.body;
 
   // validating
-  if (Nombre == null || Email == null || Contraseña == null) {
+  if (IdCliente == null || IdEmpleado == null || LecturaActual == null ||
+    LecturaAntigua == null || FechaEmision == null || IdObservacion == null
+    ) {
     return res.status(400).json({ msg: "Campos Incompletos!" });
   }
   try {
@@ -25,9 +28,12 @@ export const createNewFactur = async (req, res) => {
 
     await pool
       .request()
-      .input("Contraseña", sql.VarChar, Contraseña)
-      .input("Email", sql.VarChar, Email)
-      .input("Nombre", sql.VarChar, Nombre)
+      .input("IdObservacion", sql.INT, IdObservacion)
+      .input("FechaEmision", sql.Date, FechaEmision)
+      .input("LecturaAntigua", sql.INT, LecturaAntigua)
+      .input("LecturaActual", sql.INT, LecturaActual)
+      .input("IdEmpleado", sql.INT, IdEmpleado)
+      .input("IdCliente", sql.INT, IdCliente)
       .query(querys.addNewFactur, );
 
     res.json({ Nombre, Email, Contraseña  });
@@ -44,7 +50,7 @@ export const getFacturById = async (req, res) => {
 
     const result = await pool
       .request()
-      .input("id", req.params.id)
+      .input("IdFactura", req.params.IdFactura)
       .query(querys.getFacturaById);
     return res.json(result.recordset[0]);
   } catch (error) {
@@ -60,7 +66,7 @@ export const deleteFacturById = async (req, res) => {
 
     const result = await pool
       .request()
-      .input("id", req.params.id)
+      .input("IdFactura", req.params.IdFactura)
       .query(querys.deleteFactur);
 
     if (result.rowsAffected[0] === 0) return res.sendStatus(404);
@@ -83,10 +89,12 @@ export const getTotalFactura = async (req, res) => {
 
 //Actualizar el campo
 export const updateFacturById = async (req, res) => {
-  const { Nombre, Email, Contraseña  } = req.body;
+  const {IdCliente, IdEmpleado, LecturaActual, LecturaAntigua, FechaEmision, IdObservacion} = req.body;
 
   // validating
-  if (Nombre == null || Email == null || Contraseña == null) 
+  if (IdCliente == null || IdEmpleado == null || LecturaActual == null ||
+      LecturaAntigua == null || FechaEmision == null || IdObservacion == null
+    ) 
   {
     return res.status(400).json({ msg: "Campos Incompletos" });
   }
@@ -94,14 +102,17 @@ export const updateFacturById = async (req, res) => {
     const pool = await getConnection();
     await pool
       .request()
-      .input("Contraseña", sql.VarChar, Contraseña)
-      .input("Email", sql.VarChar, Email)
-      .input("Nombre", sql.VarChar, Nombre)
-      .input("id", req.params.id)
+      .input("IdObservacion", sql.INT, IdObservacion)
+      .input("FechaEmision", sql.Date, FechaEmision)
+      .input("LecturaAntigua", sql.INT, LecturaAntigua)
+      .input("LecturaActual", sql.INT, LecturaActual)
+      .input("IdEmpleado", sql.INT, IdEmpleado)
+      .input("IdCliente", sql.INT, IdCliente) 
+      .input("IdFactura", req.params.IdFactura)
       .query(querys.updateFacturById);
     res.json({ Nombre, Email, Contraseña  });
   } catch (error) {
     res.status(500);
-    res.send(error.message);
+    res.send(error.message);  
   }
 };

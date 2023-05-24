@@ -4,7 +4,8 @@
 @api1 = http://localhost:3000/api/tipomedidor
 @api1 = http://localhost:3000/api/cliente
 @api1 = http://localhost:3000/api/empleado
-@api1 = http://localhost:3000/api/Observacion
+@api1 = http://localhost:3000/api/observacion
+@api1 = http://localhost:3000/api/factura
 
 
 {{api}}

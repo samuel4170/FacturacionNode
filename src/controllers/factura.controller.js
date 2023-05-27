@@ -14,12 +14,13 @@ export const getFactura = async (req, res) => {
 
 //crear campo
 export const createNewFactur = async (req, res) => {
-  const {IdCliente, IdEmpleado, LecturaActual, LecturaAntigua, FechaEmision, IdObservacion} = req.body;
+  const {IdCliente, IdEmpleado, LecturaActual, LecturaAntigua, FechaEmision, IdObservacion, Consumo, Total} = req.body;
   let {  } = req.body;
 
   // validating
   if (IdCliente == null || IdEmpleado == null || LecturaActual == null ||
     LecturaAntigua == null || FechaEmision == null || IdObservacion == null
+    || Consumo == null || Total == null
     ) {
     return res.status(400).json({ msg: "Campos Incompletos!" });
   }
@@ -28,6 +29,8 @@ export const createNewFactur = async (req, res) => {
 
     await pool
       .request()
+      .input("Total", sql.Float, Total)
+      .input("Consumo", sql.Float, Consumo)
       .input("IdObservacion", sql.INT, IdObservacion)
       .input("FechaEmision", sql.Date, FechaEmision)
       .input("LecturaAntigua", sql.INT, LecturaAntigua)
@@ -89,11 +92,12 @@ export const getTotalFactura = async (req, res) => {
 
 //Actualizar el campo
 export const updateFacturById = async (req, res) => {
-  const {IdCliente, IdEmpleado, LecturaActual, LecturaAntigua, FechaEmision, IdObservacion} = req.body;
+  const {IdCliente, IdEmpleado, LecturaActual, LecturaAntigua, FechaEmision, IdObservacion, Consumo, Total} = req.body;
 
   // validating
   if (IdCliente == null || IdEmpleado == null || LecturaActual == null ||
       LecturaAntigua == null || FechaEmision == null || IdObservacion == null
+      || Consumo == null || Total == null
     ) 
   {
     return res.status(400).json({ msg: "Campos Incompletos" });
@@ -102,6 +106,8 @@ export const updateFacturById = async (req, res) => {
     const pool = await getConnection();
     await pool
       .request()
+      .input("Total", sql.Float, Total)
+      .input("Consumo", sql.Float, Consumo)
       .input("IdObservacion", sql.INT, IdObservacion)
       .input("FechaEmision", sql.Date, FechaEmision)
       .input("LecturaAntigua", sql.INT, LecturaAntigua)

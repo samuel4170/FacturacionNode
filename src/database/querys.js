@@ -58,12 +58,11 @@ export const querys = {
  
      //hacemos las consultas aca este de facturacion
 getAllFactura: "SELECT TOP(500) * FROM [FacturaEnergiaElectrica].[dbo].[Factura]",
-addNewFactur:"INSERT INTO [FacturaEnergiaElectrica].[dbo].[Factura] (IdCliente, IdEmpleado, LecturaActual, LecturaAntigua, FechaEmision, IdObservacion) VALUES (@IdCliente, @IdEmpleado, @LecturaActual, @LecturaAntigua, @FechaEmision, @IdObservacion);",
+addNewFactur:"INSERT INTO [FacturaEnergiaElectrica].[dbo].[Factura] (IdCliente, IdEmpleado, LecturaActual, LecturaAntigua, FechaEmision, IdObservacion, Consumo, Total) VALUES (@IdCliente, @IdEmpleado, @LecturaActual, @LecturaAntigua, @FechaEmision, @IdObservacion, @Consumo, @Total);",
 getFacturaById: "SELECT * FROM Factura Where IdFactura = @IdFactura",
 deleteFactur: "DELETE FROM [FacturaEnergiaElectrica].[dbo].[Factura] WHERE IdFactura= @IdFactura",
 getTotalFacturas: "SELECT COUNT(*) FROM FacturaEnergiaElectrica.dbo.Factura",
-updateFacturById:"UPDATE [FacturaEnergiaElectrica].[dbo].[Factura] SET IdEmpleado = @IdEmpleado, LecturaActual = @LecturaActual, LecturaAntigua = @LecturaAntigua, FechaEmision = @FechaEmision, IdObservacion = @IdObservacion WHERE IdFactura = @IdFactura",
-
+updateFacturById:"UPDATE [FacturaEnergiaElectrica].[dbo].[Factura] SET IdEmpleado = @IdEmpleado, LecturaActual = @LecturaActual, LecturaAntigua = @LecturaAntigua, FechaEmision = @FechaEmision, IdObservacion = @IdObservacion, Consumo = @Consumo, Total = @Total WHERE IdFactura = @IdFactura",
   };
 
 

@@ -39,7 +39,7 @@ export const createNewFactur = async (req, res) => {
       .input("IdCliente", sql.INT, IdCliente)
       .query(querys.addNewFactur, );
 
-    res.json({ Nombre, Email, Contraseña  });
+    res.json({IdCliente, IdEmpleado, LecturaActual, LecturaAntigua, FechaEmision, IdObservacion, Consumo, Total });
   } catch (error) {
     res.status(500);
     res.send(error.message);
@@ -116,7 +116,7 @@ export const updateFacturById = async (req, res) => {
       .input("IdCliente", sql.INT, IdCliente) 
       .input("IdFactura", req.params.IdFactura)
       .query(querys.updateFacturById);
-    res.json({ Nombre, Email, Contraseña  });
+    res.json({ IdCliente, IdEmpleado, LecturaActual, LecturaAntigua, FechaEmision, IdObservacion, Consumo, Total});
   } catch (error) {
     res.status(500);
     res.send(error.message);  

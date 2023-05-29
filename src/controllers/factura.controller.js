@@ -71,7 +71,7 @@ export const deleteFacturById = async (req, res) => {
       .request()
       .input("Id", req.params.Id)
       .query(querys.deleteFactur);
-
+      
     if (result.rowsAffected[0] === 0) return res.sendStatus(404);
 
     return res.sendStatus(204);

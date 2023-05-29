@@ -12,6 +12,7 @@ import {
 
 const router = Router();
 
+  
 router.get("/factura", getFactura);
 
 router.post("/factura", createNewFactur);

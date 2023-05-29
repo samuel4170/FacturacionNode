@@ -60,9 +60,9 @@ export const querys = {
 getAllFactura: "SELECT TOP(500) * FROM [FacturaEnergiaElectrica].[dbo].[Factura]",
 addNewFactur:"INSERT INTO [FacturaEnergiaElectrica].[dbo].[Factura] (IdCliente, IdEmpleado, LecturaActual, LecturaAntigua, FechaEmision, IdObservacion, Consumo, Total) VALUES (@IdCliente, @IdEmpleado, @LecturaActual, @LecturaAntigua, @FechaEmision, @IdObservacion, @Consumo, @Total);",
 getFacturaById: "SELECT * FROM Factura Where Id = @Id",
-deleteFactur: "DELETE FROM [FacturaEnergiaElectrica].[dbo].[Factura] WHERE Id= @Id",
+deleteFactur: "DELETE FROM [FacturaEnergiaElectrica].[dbo].[Factura] WHERE Id = @Id",
 getTotalFacturas: "SELECT COUNT(*) FROM FacturaEnergiaElectrica.dbo.Factura",
-updateFacturById:"UPDATE [FacturaEnergiaElectrica].[dbo].[Factura] SET IdEmpleado = @IdEmpleado, LecturaActual = @LecturaActual, LecturaAntigua = @LecturaAntigua, FechaEmision = @FechaEmision, IdObservacion = @IdObservacion, Consumo = @Consumo, Total = @Total WHERE Id = @Id",
+updateFacturById:"UPDATE [FacturaEnergiaElectrica].[dbo].[Factura] SET IdCliente = @IdCliente, IdEmpleado = @IdEmpleado, LecturaActual = @LecturaActual, LecturaAntigua = @LecturaAntigua, FechaEmision = @FechaEmision, IdObservacion = @IdObservacion, Consumo = @Consumo, Total = @Total WHERE Id = @Id",
 };
 
 

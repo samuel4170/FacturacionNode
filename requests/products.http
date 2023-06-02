@@ -8,6 +8,10 @@
 @api1 = http://localhost:3000/api/factura
 
 
+# @api1 = http://localhost:3000/api
+
+
+
 {{api}}
 
 //enviamos el post
